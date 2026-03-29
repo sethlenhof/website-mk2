@@ -4,6 +4,7 @@ export type ExperienceItem = {
   start: string;
   end: string;
   location?: string;
+  summary: string;
   bullets: string[];
   tags: string[];
 };
@@ -15,12 +16,15 @@ export const experience: ExperienceItem[] = [
     start: "Sep 2025",
     end: "Present",
     location: "Orlando, FL",
+    summary:
+      "Simulation, networking, and rendering work across complex training systems.",
     bullets: [
       "Led development of HLA integration into the Pilot Training Aid simulator.",
-      "Acted as a primary software engineer and SME for simulation networking and development.",
-      "Improved performance, rendering stability, and core simulation systems.",
+      "Acted as a primary software engineer and SME for simulation networking and software development.",
+      "Refactored core simulation systems to improve performance and runtime behavior.",
+      "Diagnosed and resolved DirectX 12 GPU memory issues affecting rendering stability.",
     ],
-    tags: ["C++", "HLA", "DirectX 12", "CI/CD"],
+    tags: ["C++", "HLA", "DirectX 12", "Simulation", "CI/CD"],
   },
   {
     company: "Lockheed Martin",
@@ -28,24 +32,13 @@ export const experience: ExperienceItem[] = [
     start: "Jan 2025",
     end: "Sep 2025",
     location: "Orlando, FL",
+    summary:
+      "Worked on simulator performance, CI/CD improvements, and HLA research/integration.",
     bullets: [
-      "Improved CI/CD pipelines with SonarQube and Fortify.",
-      "Researched and developed HLA integration with MAK RTI into Prepar3D.",
-      "Refactored subprocesses to improve launch speed.",
+      "Improved CI/CD pipelines by integrating SonarQube and Fortify.",
+      "Led research and development to integrate MAK RTI into Prepar3D.",
+      "Refactored key subprocesses to improve launch speed and reliability.",
     ],
-    tags: ["C++", "GitLab", "Fortify", "SonarQube"],
-  },
-  {
-    company: "Lockheed Martin",
-    role: "PTA Software Engineer Intern",
-    start: "May 2024",
-    end: "Dec 2024",
-    location: "Orlando, FL",
-    bullets: [
-      "Contributed to new feature efforts for the Pilot Training Aid desktop simulator.",
-      "Created regression-testing scenarios and updated requirements documentation.",
-      "Built supporting tools and collaborated across teams for integration work.",
-    ],
-    tags: ["C++", "C#", "Prepar3D", "Windows"],
+    tags: ["C++", "GitLab", "Fortify", "SonarQube", "Prepar3D"],
   },
 ];

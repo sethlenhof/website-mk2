@@ -2,13 +2,21 @@ import { site } from "@/data/site";
 
 export default function Hero() {
   return (
-    <section id="home" className="mx-auto max-w-6xl px-6 py-20 scroll-mt-24">
-      <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl">
-        <p className="text-sm uppercase tracking-[0.2em] text-white/60">
+    <section
+      id="home"
+      className="relative mx-auto max-w-6xl px-6 py-24 scroll-mt-24"
+    >
+      {/* background glow */}
+      <div className="pointer-events-none absolute inset-0 -z-10 flex justify-center">
+        <div className="h-72 w-[600px] rounded-full bg-blue-500/10 blur-3xl" />
+      </div>
+
+      <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur">
+        <p className="text-xs uppercase tracking-[0.25em] text-white/50">
           {site.name}
         </p>
 
-        <h1 className="mt-4 text-4xl font-bold sm:text-6xl">
+        <h1 className="mt-4 text-4xl font-bold leading-tight sm:text-6xl">
           {site.headline}
         </h1>
 
@@ -16,28 +24,30 @@ export default function Hero() {
           {site.subheadline}
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-10 flex flex-wrap gap-3">
           <a
             href={site.links.github}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
+            className="rounded-full border border-white/10 bg-white/10 px-5 py-2 text-sm text-white transition hover:bg-white/20"
           >
             GitHub
           </a>
+
           <a
             href={site.links.linkedin}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
+            className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
           >
             LinkedIn
           </a>
+
           <a
             href={`mailto:${site.email}`}
-            className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
+            className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
           >
-            Email
+            Contact
           </a>
         </div>
       </div>
