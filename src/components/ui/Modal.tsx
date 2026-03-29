@@ -100,7 +100,11 @@ export default function Modal({
         <div className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-4">
           <div className="flex min-w-0 items-center gap-4">
             {headerLogo ? (
-              <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+              <div
+                className={`flex shrink-0 items-center justify-center overflow-hidden ${
+                  headerLogoMode === "wide" ? "px-3 py-2" : "h-16 w-16 rounded-2xl border border-white/10 bg-black/20"
+                }`}
+              >
                 <img
                   src={headerLogo}
                   alt={headerLogoAlt ?? `${title} logo`}
@@ -108,7 +112,7 @@ export default function Modal({
                 />
               </div>
             ) : null}
-            
+
             <h3 className="min-w-0 text-2xl font-semibold text-white">
               {title}
             </h3>
