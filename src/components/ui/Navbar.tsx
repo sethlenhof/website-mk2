@@ -37,11 +37,13 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const linkBase =
-    "rounded-xl px-4 py-2 text-white transition-all duration-500";
-  const activeLink =
-    "bg-[rgba(0,0,0,0.55)] shadow-[0_0_24px_rgba(33,38,35,0.9)]";
-  const inactiveLink = "bg-black/20 hover:bg-black/30";
+const linkBase =
+  "rounded-xl px-4 py-2 text-white transition-all duration-500";
+const activeLink =
+  "bg-[rgba(0,0,0,0.55)] shadow-[0_0_24px_rgba(33,38,35,0.9)]";
+const mobileActiveLink =
+  "rounded-2xl bg-[rgba(0,0,0,0.55)] shadow-[0_0_10px_rgba(33,38,35,0.9)]";
+const inactiveLink = "bg-black/20 hover:bg-black/30";
 
   return (
     <header className="sticky top-0 z-50 px-3 pt-3">
@@ -134,16 +136,17 @@ export default function Navbar() {
                         const isActive = activeSection === item.id;
 
                     return (
-                    <a
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setMenuOpen(false)}
-                        className={`${linkBase} ${
-                        isActive ? activeLink : inactiveLink
-                        } text-center`}
-                    >
-                        {item.label}
-                    </a>
+                    <div key={item.href} className="px-2 py-1">
+                        <a
+                            href={item.href}
+                            onClick={() => setMenuOpen(false)}
+                            className={`block rounded-2xl px-4 py-3 text-center text-white transition-all duration-500 ${
+                                isActive ? mobileActiveLink : inactiveLink
+                            }`}
+                            >
+                            {item.label}
+                        </a>
+                    </div>
                     );
                 })}
               </div>
