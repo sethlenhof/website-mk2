@@ -27,3 +27,30 @@ body {
 ::selection {
   background: rgba(59, 130, 246, 0.3);
 }
+
+/* ===== Scrollbar (Chrome, Edge, Safari) ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border : 2px solid #0a0a0a;
+  background: linear-gradient(
+    45deg,
+    rgba(251, 63, 220, 1) 0%,
+    rgba(105, 70, 252, 1) 100%
+  );
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 90, 230, 1) 0%,
+    rgba(130, 100, 255, 1) 100%
+  );
+}
