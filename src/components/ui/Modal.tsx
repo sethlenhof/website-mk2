@@ -97,34 +97,40 @@ export default function Modal({
             : "translate-y-2 scale-[0.98] opacity-0"
         }`}
       >
-        <div className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-4">
-          <div className="flex min-w-0 items-center gap-4">
-            {headerLogo ? (
-              <div
-                className={`flex shrink-0 items-center justify-center overflow-hidden ${
-                  headerLogoMode === "wide" ? "px-3 py-2" : "h-16 w-16 rounded-2xl border border-white/10 bg-black/20"
-                }`}
-              >
-                <img
-                  src={headerLogo}
-                  alt={headerLogoAlt ?? `${title} logo`}
-                  className={getHeaderLogoClass(headerLogoMode)}
-                />
-              </div>
-            ) : null}
+      <div className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+        <div
+          className={`min-w-0 ${
+            headerLogoMode === "wide"
+              ? "flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
+              : "flex min-w-0 items-center gap-4"
+          }`}
+        >
+          {headerLogo ? (
+            <div
+              className={`flex shrink-0 items-center justify-center overflow-hidden ${
+                headerLogoMode === "wide" ? "w-fit px-3 py-2" : "h-16 w-16 rounded-2xl border border-white/10 bg-black/20"
+              }`}
+            >
+              <img
+                src={headerLogo}
+                alt={headerLogoAlt ?? `${title} logo`}
+                className={getHeaderLogoClass(headerLogoMode)}
+              />
+            </div>
+          ) : null}
 
-            <h3 className="min-w-0 text-2xl font-semibold text-white">
-              {title}
-            </h3>
-          </div>
-
-          <button
-            onClick={onClose}
-            className="shrink-0 rounded-full border border-white/10 px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
-          >
-            Close
-          </button>
+          <h3 className="min-w-0 text-2xl font-semibold text-white">
+            {title}
+          </h3>
         </div>
+
+        <button
+          onClick={onClose}
+          className="shrink-0 rounded-full border border-white/10 px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
+        >
+          Close
+        </button>
+      </div>
 
         {children}
       </div>
