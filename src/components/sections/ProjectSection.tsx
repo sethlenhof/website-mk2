@@ -6,18 +6,6 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import Modal from "@/components/ui/Modal";
 import { projects, type ProjectItem } from "@/data/projects";
 
-function getHeaderLogoClass(mode?: ProjectItem["headerLogoMode"]) {
-  switch (mode) {
-    case "wide-svg":
-      return "h-12 w-auto max-w-[240px] object-contain";
-    case "contain":
-      return "h-16 w-16 object-contain";
-    case "cover":
-    default:
-      return "h-16 w-16 rounded-xl object-cover";
-  }
-}
-
 export default function ProjectsSection() {
   const [selected, setSelected] = useState<ProjectItem | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -62,11 +50,6 @@ export default function ProjectsSection() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isModalOpen, mediaCount]);
 
-  const headerLogoClass = useMemo(
-    () => getHeaderLogoClass(selected?.headerLogoMode),
-    [selected?.headerLogoMode]
-  );
-
   return (
     <section id="projects" className="mx-auto max-w-6xl px-6 py-12">
       <SectionHeader title="Projects" />
@@ -86,43 +69,35 @@ export default function ProjectsSection() {
         onClose={closeModal}
         onAfterClose={clearSelected}
         title={selected?.title ?? ""}
+        headerLogo={selected?.logo}
+        headerLogoMode={selected?.logoMode}
+        headerLogoAlt={selected ? `${selected.title} logo` : "Project logo"}
       >
-        {selected ? (
-          <div>
-            <div className="mb-6 flex flex-col gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-center">
-              {selected.headerLogo ? (
-                <div className="flex shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-black/20 p-3">
-                  <img
-                    src={selected.headerLogo}
-                    alt={`${selected.title} logo`}
-                    className={headerLogoClass}
-                  />
-                </div>
-              ) : null}
+      {selected ? (
+        <div>
+          <div className="mb-6">
+            <h5 className="text-lg font-semibold text-white">Description</h5>
+            <p className="mt-3 leading-7 text-white/80">
+              {selected.description}
+            </p>
+          </div>
 
-              <div>
-                <h4 className="text-xl font-semibold text-white">
-                  {selected.title}
-                </h4>
-                <p className="mt-2 text-white/70">
-                  {selected.summary}
-                </p>
-              </div>
-            </div>
-
-            <p className="text-white/80 leading-7">{selected.description}</p>
-
-            {selected.bullets && selected.bullets.length > 0 ? (
-              <ul className="mt-6 space-y-3 text-white/80">
+          {selected.bullets && selected.bullets.length > 0 ? (
+            <div className="mb-6">
+              <h5 className="text-lg font-semibold text-white">Highlights</h5>
+              <ul className="mt-3 space-y-3 text-white/80">
                 {selected.bullets.map((bullet) => (
                   <li key={bullet} className="leading-7">
                     • {bullet}
                   </li>
                 ))}
               </ul>
-            ) : null}
+            </div>
+          ) : null}
 
-            <div className="mt-6 flex flex-wrap gap-2">
+          <div className="mb-6">
+            <h5 className="text-lg font-semibold text-white">Tech Stack</h5>
+            <div className="mt-3 flex flex-wrap gap-2">
               {selected.tags.map((tag) => (
                 <span
                   key={tag}
@@ -132,91 +107,92 @@ export default function ProjectsSection() {
                 </span>
               ))}
             </div>
-
-            {(selected.github || selected.demo) && (
-              <div className="mt-6 flex flex-wrap gap-3">
-                {selected.github ? (
-                  <a
-                    href={selected.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
-                  >
-                    GitHub
-                  </a>
-                ) : null}
-
-                {selected.demo ? (
-                  <a
-                    href={selected.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
-                  >
-                    Live Demo
-                  </a>
-                ) : null}
-              </div>
-            )}
-
-            {selected.media && selected.media.length > 0 ? (
-              <div className="mt-8">
-                <div className="mb-3 flex items-center justify-between">
-                  <h5 className="text-lg font-semibold text-white">Screenshots</h5>
-                  {selected.media.length > 1 ? (
-                    <p className="text-sm text-white/50">
-                      {currentSlide + 1} / {selected.media.length}
-                    </p>
-                  ) : null}
-                </div>
-
-                <div className="relative">
-                  <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-                    <div
-                      className="flex transition-transform duration-500"
-                      style={{
-                        transform: `translateX(-${currentSlide * 100}%)`,
-                      }}
-                    >
-                      {selected.media.map((item) => (
-                        <div key={item.src} className="min-w-full">
-                          <img
-                            src={item.src}
-                            alt={item.alt}
-                            className="h-[240px] w-full object-contain bg-black/20 md:h-[380px]"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {selected.media.length > 1 ? (
-                    <>
-                      <button
-                        type="button"
-                        onClick={prevSlide}
-                        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 px-3 py-2 text-white/80 transition hover:bg-black/70"
-                        aria-label="Previous screenshot"
-                      >
-                        ‹
-                      </button>
-
-                      <button
-                        type="button"
-                        onClick={nextSlide}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 px-3 py-2 text-white/80 transition hover:bg-black/70"
-                        aria-label="Next screenshot"
-                      >
-                        ›
-                      </button>
-                    </>
-                  ) : null}
-                </div>
-              </div>
-            ) : null}
           </div>
-        ) : null}
-      </Modal>
+
+          {(selected.github || selected.demo) && (
+            <div className="mb-8 flex flex-wrap gap-3">
+              {selected.github ? (
+                <a
+                  href={selected.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
+                >
+                  GitHub
+                </a>
+              ) : null}
+
+              {selected.demo ? (
+                <a
+                  href={selected.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
+                >
+                  Live Demo
+                </a>
+              ) : null}
+            </div>
+          )}
+
+          {selected.media && selected.media.length > 0 ? (
+            <div className="mt-8">
+              <div className="mb-3 flex items-center justify-between">
+                <h5 className="text-lg font-semibold text-white">Screenshots</h5>
+                {selected.media.length > 1 ? (
+                  <p className="text-sm text-white/50">
+                    {currentSlide + 1} / {selected.media.length}
+                  </p>
+                ) : null}
+              </div>
+
+              <div className="relative">
+                <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+                  <div
+                    className="flex transition-transform duration-500"
+                    style={{
+                      transform: `translateX(-${currentSlide * 100}%)`,
+                    }}
+                  >
+                    {selected.media.map((item) => (
+                      <div key={item.src} className="min-w-full">
+                        <img
+                          src={item.src}
+                          alt={item.alt}
+                          className="h-[240px] w-full object-contain bg-black/20 md:h-[380px]"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {selected.media.length > 1 ? (
+                  <>
+                    <button
+                      type="button"
+                      onClick={prevSlide}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 px-3 py-2 text-white/80 transition hover:bg-black/70"
+                      aria-label="Previous screenshot"
+                    >
+                      ‹
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={nextSlide}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 px-3 py-2 text-white/80 transition hover:bg-black/70"
+                      aria-label="Next screenshot"
+                    >
+                      ›
+                    </button>
+                  </>
+                ) : null}
+              </div>
+            </div>
+          ) : null}
+        </div>
+      ) : null}
+    </Modal>
     </section>
   );
 }

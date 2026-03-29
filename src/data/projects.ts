@@ -13,9 +13,8 @@ export type ProjectItem = {
   github?: string;
   demo?: string;
 
-  cardImage: string;
-  headerLogo?: string;
-  headerLogoMode?: "contain" | "cover" | "wide-svg";
+  logo: string;
+  logoMode?: "square" | "contain" | "wide";
   media?: ProjectMediaItem[];
 };
 
@@ -33,9 +32,8 @@ export const projects: ProjectItem[] = [
     ],
     tags: ["React", "Express", "SQL", "JWT", "REST API"],
     github: "https://github.com/yourusername/university-event-scheduler",
-    cardImage: "/images/projects/university-scheduler/card.jpg",
-    headerLogo: "/images/projects/university-scheduler/card.jpg",
-    headerLogoMode: "contain",
+    logo: "/images/projects/university-scheduler/card.jpg",
+    logoMode: "square",
     media: [
       { src: "/images/projects/university-scheduler/1.jpeg", alt: "Login screen" },
       { src: "/images/projects/university-scheduler/2.png", alt: "Event view" },
@@ -55,9 +53,8 @@ export const projects: ProjectItem[] = [
     ],
     tags: ["React", "TypeScript", "API Integration", "Web App"],
     github: "https://github.com/yourusername/leetsocial",
-    cardImage: "/images/projects/LeetSocial/card.jpeg",
-    headerLogo: "/images/projects/LeetSocial/card.jpeg",
-    headerLogoMode: "contain",
+    logo: "/images/projects/LeetSocial/card.jpeg",
+    logoMode: "square",
     media: [
       { src: "/images/projects/LeetSocial/1.jpg", alt: "Login Page" },
       { src: "/images/projects/LeetSocial/2.jpg", alt: "Desktop Dashboard" },
@@ -75,9 +72,8 @@ export const projects: ProjectItem[] = [
       "Focused on interactive storytelling and conversational flow.",
     ],
     tags: ["React", "Hackathon", "AI", "Frontend"],
-    cardImage: "/images/projects/StoryForge/card.png",
-    headerLogo: "/images/projects/StoryForge/card.png",
-    headerLogoMode: "contain",
+    logo: "/images/projects/StoryForge/card.png",
+    logoMode: "square",
     media: [
       { src: "/images/projects/StoryForge/1.png", alt: "Character Creation" },
       { src: "/images/projects/StoryForge/2.png", alt: "Dungeon Master Interaction in forest" },
@@ -96,9 +92,8 @@ export const projects: ProjectItem[] = [
       "Explored remote workflow control and device coordination.",
     ],
     tags: ["Web App", "Automation", "Frontend", "Backend"],
-    cardImage: "/images/projects/Dequeue/card.png",
-    headerLogo: "/images/projects/Dequeue/card.png",
-    headerLogoMode: "contain",
+    logo: "/images/projects/Dequeue/card.png",
+    logoMode: "square",
     media: [
       { src: "/images/projects/Dequeue/useAction.gif", alt: "Using Action on mobile", type: "gif" },
       { src: "/images/projects/Dequeue/mobileSettings.gif", alt: "Mobile Settings", type: "gif" },

@@ -2,13 +2,31 @@
 
 import { ReactNode, useEffect, useState } from "react";
 
+type HeaderLogoMode = "square" | "contain" | "wide";
+
 type ModalProps = {
   isOpen: boolean;
   onClose: () => void;
   onAfterClose?: () => void;
   title: string;
   children: ReactNode;
+
+  headerLogo?: string;
+  headerLogoAlt?: string;
+  headerLogoMode?: HeaderLogoMode;
 };
+
+function getHeaderLogoClass(mode: HeaderLogoMode = "square") {
+  switch (mode) {
+    case "wide":
+      return "h-10 w-auto max-w-[220px] object-contain";
+    case "contain":
+      return "h-full w-full object-contain";
+    case "square":
+    default:
+      return "h-full w-full object-cover";
+  }
+}
 
 export default function Modal({
   isOpen,
@@ -16,6 +34,9 @@ export default function Modal({
   onAfterClose,
   title,
   children,
+  headerLogo,
+  headerLogoAlt,
+  headerLogoMode = "square",
 }: ModalProps) {
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -65,23 +86,37 @@ export default function Modal({
     <div
       onClick={onClose}
       className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-500 ${
-        visible ? "bg-black/60 backdrop-blur-sm" : "bg-black/0 backdrop-blur-0"
+        visible ? "bg-black/60" : "bg-black/0"
       }`}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl border border-white/10 bg-[#1a1f1d] p-6 shadow-2xl transition-all duration-500 ${
+        className={`max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-white/10 bg-[#1a1f1d] p-6 shadow-2xl transition-all duration-500 ${
           visible
             ? "translate-y-0 scale-100 opacity-100"
             : "translate-y-2 scale-[0.98] opacity-0"
         }`}
       >
         <div className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-4">
-          <h3 className="text-2xl font-semibold text-white">{title}</h3>
+          <div className="flex min-w-0 items-center gap-4">
+            {headerLogo ? (
+              <div className="flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+                <img
+                  src={headerLogo}
+                  alt={headerLogoAlt ?? `${title} logo`}
+                  className={getHeaderLogoClass(headerLogoMode)}
+                />
+              </div>
+            ) : null}
+            
+            <h3 className="min-w-0 text-2xl font-semibold text-white">
+              {title}
+            </h3>
+          </div>
 
           <button
             onClick={onClose}
-            className="rounded-full border border-white/10 px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
+            className="shrink-0 rounded-full border border-white/10 px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
           >
             Close
           </button>

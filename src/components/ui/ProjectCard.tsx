@@ -14,7 +14,7 @@ export default function ProjectCard({ item, onOpen }: ProjectCardProps) {
     >
       <div className="overflow-hidden rounded-t-2xl border-b border-white/10 bg-black/20">
         <img
-          src={item.cardImage}
+          src={item.logo}
           alt={`${item.title} cover`}
           className="h-44 w-full object-cover"
         />
