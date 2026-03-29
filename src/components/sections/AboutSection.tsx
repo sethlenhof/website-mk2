@@ -44,7 +44,7 @@ export default function AboutSection() {
             </a>
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-black/20 block">
+          <div className="mt-6 hidden overflow-hidden rounded-2xl border border-white/10 bg-black/20 block lg:block">
             <iframe
               src={resumeHref}
               title="Resume Preview"
