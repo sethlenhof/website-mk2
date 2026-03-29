@@ -7,6 +7,9 @@ export type ExperienceItem = {
   summary: string;
   bullets: string[];
   tags: string[];
+
+  companyLogo?: string;
+  companyLogoMode?: "square" | "contain" | "wide";
 };
 
 export const experience: ExperienceItem[] = [
@@ -25,6 +28,8 @@ export const experience: ExperienceItem[] = [
       "Diagnosed and resolved DirectX 12 GPU memory issues affecting rendering stability.",
     ],
     tags: ["C++", "HLA", "DirectX 12", "Simulation", "CI/CD"],
+    companyLogo: "/images/experience/lockheed-logo.svg",
+    companyLogoMode: "wide",
   },
   {
     company: "Lockheed Martin",
@@ -40,5 +45,7 @@ export const experience: ExperienceItem[] = [
       "Refactored key subprocesses to improve launch speed and reliability.",
     ],
     tags: ["C++", "GitLab", "Fortify", "SonarQube", "Prepar3D"],
+    companyLogo: "/images/experience/lockheed-logo.svg",
+    companyLogoMode: "wide",
   },
 ];

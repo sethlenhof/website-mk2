@@ -41,7 +41,10 @@ export default function ExperienceSection() {
         isOpen={isModalOpen}
         onClose={closeModal}
         onAfterClose={clearSelected}
-        title={selected ? `${selected.role} — ${selected.company}` : ""}
+        title={selected ? `${selected.role}` : ""}
+        headerLogo={selected?.companyLogo}
+        headerLogoAlt={selected ? `${selected.company}` : undefined}
+        headerLogoMode={selected?.companyLogoMode}
       >
         {selected ? (
           <div>
