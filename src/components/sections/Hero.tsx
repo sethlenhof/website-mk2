@@ -4,9 +4,8 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative mx-auto max-w-6xl px-6 py-24 scroll-mt-24"
+      className="relative mx-auto max-w-6xl px-6 py-20 md:py-24"
     >
-      {/* background glow */}
       <div className="pointer-events-none absolute inset-0 -z-10 flex justify-center">
         <div className="h-72 w-[600px] rounded-full bg-blue-500/10 blur-3xl" />
       </div>

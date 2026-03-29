@@ -45,10 +45,49 @@ const mobileActiveLink =
   "rounded-2xl bg-[rgba(0,0,0,0.55)] shadow-[0_0_10px_rgba(33,38,35,0.9)]";
 const inactiveLink = "bg-black/20 hover:bg-black/30";
 
+useEffect(() => {
+  const hash = window.location.hash.replace("#", "");
+  if (!hash) return;
+
+  // wait for layout to fully render
+  const timer = setTimeout(() => {
+    scrollToSection(hash);
+  }, 50);
+
+  return () => clearTimeout(timer);
+}, []);
+
+const scrollToSection = (id: string) => {
+  const section = document.getElementById(id);
+  if (!section) return;
+
+  if (id === "home") {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    return;
+  }
+
+  const nav = document.querySelector("header");
+  const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+
+  const top =
+    section.getBoundingClientRect().top +
+    window.scrollY -
+    navHeight;
+
+  window.scrollTo({
+    top,
+    behavior: "smooth",
+  });
+};
+
   return (
     <header className="sticky top-0 z-50 px-3 pt-3">
       <nav
         className="mx-auto max-w-6xl rounded-2xl px-4 py-2 text-sm text-white shadow-lg"
+
         style={{
           background:
             "linear-gradient(45deg, rgba(251,63,220,1) 0%, rgba(105,70,252,1) 100%)",
@@ -75,6 +114,10 @@ const inactiveLink = "bg-black/20 hover:bg-black/30";
                   <a
                     key={item.href}
                     href={item.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.id);
+                    }}
                     className={`${linkBase} ${isActive ? activeLink : "hover:bg-black/20"}`}
                   >
                     {item.label}
@@ -139,7 +182,11 @@ const inactiveLink = "bg-black/20 hover:bg-black/30";
                     <div key={item.href} className="px-2 py-1">
                         <a
                             href={item.href}
-                            onClick={() => setMenuOpen(false)}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                scrollToSection(item.id);
+                                setMenuOpen(false);
+                            }}
                             className={`block rounded-2xl px-4 py-3 text-center text-white transition-all duration-500 ${
                                 isActive ? mobileActiveLink : inactiveLink
                             }`}

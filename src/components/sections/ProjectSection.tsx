@@ -4,9 +4,7 @@ import { projects } from "@/data/projects";
 
 export default function ProjectsSection() {
   return (
-    <section
-      id="projects"
-      className="mx-auto max-w-6xl px-6 py-12 scroll-mt-24">
+    <section id="projects" className="mx-auto max-w-6xl px-6 py-12">
       <SectionHeader title="Projects" />
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">

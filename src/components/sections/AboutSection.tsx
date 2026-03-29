@@ -3,10 +3,7 @@ import { about } from "@/data/about";
 
 export default function AboutSection() {
   return (
-    <section
-      id="about"
-      className="mx-auto max-w-6xl px-6 py-12 scroll-mt-24"
-    >
+    <section id="about" className="mx-auto max-w-6xl px-6 py-12">
       <SectionHeader title="About" />
 
       <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg">
