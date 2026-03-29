@@ -2,7 +2,7 @@ import { site } from "@/data/site";
 
 export default function Hero() {
   return (
-    <section id="home" className="mx-auto max-w-6xl px-6 py-20">
+    <section id="home" className="mx-auto max-w-6xl px-6 py-20 scroll-mt-24">
       <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl">
         <p className="text-sm uppercase tracking-[0.2em] text-white/60">
           {site.name}

@@ -4,7 +4,7 @@ import { skills } from "@/data/skills";
 
 export default function SkillsSection() {
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-6 py-12">
+    <section id="skills" className="mx-auto max-w-6xl px-6 py-12 scroll-mt-24">
       <SectionHeader title="Skills" />
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
