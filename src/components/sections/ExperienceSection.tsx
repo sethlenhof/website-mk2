@@ -72,72 +72,73 @@ export default function ExperienceSection() {
                 ))}
               </div>
             </div>
-            <div className="relative mt-6">
-  <div className="absolute left-[11px] top-0 h-full w-px bg-white/10" />
+            {/* Timeline and cards */}
+            <div className="relative mt-6 py-6">
+              <div className="absolute left-[11px] top-6 bottom-6 w-px bg-white/10" />
 
-  <div className="space-y-6">
-    {selected.roles.map((role) => (
-      <div key={`${role.title}-${role.start}`} className="relative pl-8">
-        <div
-          className={`absolute left-0 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full border ${
-            role.current
-              ? "border-emerald-400/30 bg-emerald-400/20"
-              : "border-white/15 bg-[#1a1f1d]"
-          }`}
-        >
-          <div
-            className={`h-2.5 w-2.5 rounded-full ${
-              role.current ? "bg-emerald-300" : "bg-white/40"
-            }`}
-          />
-        </div>
-        {/* content */}
-        <div
-        className={`rounded-2xl border p-5 ${
-          role.current
-            ? "border-emerald-400/20 bg-emerald-400/5"
-            : "border-white/10 bg-black/20"
-        }`}>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-            <div>
-              <div className="flex flex-wrap items-center gap-2">
-                <h6 className="text-base font-semibold text-white">
-                  {role.title}
-                </h6>
+              <div className="space-y-6">
+                {selected.roles.map((role) => (
+                  <div key={`${role.title}-${role.start}`} className="relative pl-8">
+                    <div
+                      className={`absolute left-0 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full border ${
+                        role.current
+                          ? "border-emerald-400/30 bg-emerald-400/20"
+                          : "border-white/15 bg-[#1a1f1d]"
+                      }`}
+                    >
+                      <div
+                        className={`h-2.5 w-2.5 rounded-full ${
+                          role.current ? "bg-emerald-300" : "bg-white/40"
+                        }`}
+                      />
+                    </div>
+                    {/* content */}
+                    <div
+                    className={`rounded-2xl border p-5 ${
+                      role.current
+                        ? "border-emerald-400/20 bg-emerald-400/5"
+                        : "border-white/10 bg-black/20"
+                    }`}>
+                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            <h6 className="text-base font-semibold text-white">
+                              {role.title}
+                            </h6>
 
-                {role.team ? (
-                  <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-white/60">
-                    {role.team}
-                  </span>
-                ) : null}
+                            {role.team ? (
+                              <span className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-white/60">
+                                {role.team}
+                              </span>
+                            ) : null}
 
-                {role.current ? (
-                  <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-xs text-emerald-300">
-                    Current
-                  </span>
-                ) : null}
+                            {role.current ? (
+                              <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-xs text-emerald-300">
+                                Current
+                              </span>
+                            ) : null}
+                          </div>
+
+                          <p className="mt-2 text-white/70">{role.summary}</p>
+                        </div>
+
+                        <p className="text-sm text-white/45">
+                          {role.start} — {role.end}
+                        </p>
+                      </div>
+
+                      <ul className="mt-4 space-y-2 text-white/80">
+                        {role.bullets.map((bullet) => (
+                          <li key={bullet} className="leading-7">
+                            • {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
               </div>
-
-              <p className="mt-2 text-white/70">{role.summary}</p>
             </div>
-
-            <p className="text-sm text-white/45">
-              {role.start} — {role.end}
-            </p>
-          </div>
-
-          <ul className="mt-4 space-y-2 text-white/80">
-            {role.bullets.map((bullet) => (
-              <li key={bullet} className="leading-7">
-                • {bullet}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    ))}
-  </div>
-</div>
           </div>
         ) : null}
       </Modal>
