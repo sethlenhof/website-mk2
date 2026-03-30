@@ -9,8 +9,8 @@ export default function AboutSection() {
       <SectionHeader title="About" />
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg">
-          <div className="space-y-4 text-base leading-7 text-white/75 sm:text-lg">
+      <div className="flex h-full flex-col justify-center rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg">
+        <div className="space-y-4 text-base leading-7 text-white/75 sm:text-lg">
             {about.blurb.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
             ))}
