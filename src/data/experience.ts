@@ -48,4 +48,40 @@ export const experience: ExperienceItem[] = [
     companyLogo: "/images/experience/lockheed-logo.svg",
     companyLogoMode: "wide",
   },
+  {
+    company: "Lockheed Martin",
+    role: "Software Engineer Intern - Simulation",
+    start: "Jan 2025",
+    end: "May 2024",
+    location: "Orlando, FL",
+    summary:
+      "Worked on simulator feature development, testing, and integration for the Pilot Training Aid desktop simulator.",
+    bullets: [
+      "Led winning team RMS TLS intern project to revolutionize business with new technologies",
+      "Contributed to 2 new feature efforts for the Pilot Training Aid desktop simulator in C++",
+      "Created testing scenarios to allow for regression testing of the new capabilities, as well as updating requirements documentation to match features",
+      "Developed a C# ASP.NET web app for launching of courseware from LMS system, and attended cross-functional meetings to ensure 100% compatibility and integration with current configurations"
+    ],
+    tags: ["C++", "C#", "Wix Installer", "Gitlab", "Prepar3D", "Doors Next", "Agile"],
+    companyLogo: "/images/experience/lockheed-logo.svg",
+    companyLogoMode: "wide",
+  },
+  {
+    company: "Lockheed Martin",
+    role: "Software Engineer Intern - Fullstack",
+    start: "Jan 2025",
+    end: "Sep 2025",
+    location: "Orlando, FL",
+    summary:
+      "Worked on fullstack web development for Training and Learning Management Systems. Assisted with design of new LMS system.",
+    bullets: [
+      "Led intern project team as scrum leader and software developer to develop a robot capable of extracting information from hostile zones",
+      "Utilized Java, Typescript, and XHTML to develop scheduling website for Training Systems",
+      "Implemented threading to allow background exporting of schedules and reducing time for export by 20%, for better user experience",
+      "Created use case diagrams and documentation to ensure clear requirements for integrations of new LMS system"
+    ],
+    tags: ["Java", "TypeScript", "HTML", "Maven", "SQL", "Gitlab", "Docker"],
+    companyLogo: "/images/experience/lockheed-logo.svg",
+    companyLogoMode: "wide",
+  },
 ];
