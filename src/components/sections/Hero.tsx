@@ -28,7 +28,7 @@ export default function Hero() {
             href={site.links.github}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-white/10 bg-white/10 px-5 py-2 text-sm text-white transition hover:bg-white/20"
+            className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
           >
             GitHub
           </a>
