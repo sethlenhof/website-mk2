@@ -1,6 +1,5 @@
 import AboutSection from "@/components/sections/AboutSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
-import ExperienceSection2 from "@/components/sections/ExperienceSection2";
 import Hero from "@/components/sections/Hero";
 import ProjectsSection from "@/components/sections/ProjectSection";
 import SkillsSection from "@/components/sections/SkillsSection";
@@ -13,7 +12,6 @@ export default function Home() {
       <Hero />
       <AboutSection />
       <ExperienceSection />
-      <ExperienceSection2 /> {/* Temporary for experience comparison*/}
       <ProjectsSection />
       <SkillsSection />
     </main>
