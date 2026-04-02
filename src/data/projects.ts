@@ -31,7 +31,7 @@ export const projects: ProjectItem[] = [
       "Implemented validation, authentication, and API-driven data flow.",
     ],
     tags: ["React", "Express", "SQL", "JWT", "REST API"],
-    github: "https://github.com/yourusername/university-event-scheduler",
+    github: "https://github.com/sethlenhof/DatabaseProject",
     logo: "/images/projects/university-scheduler/card.jpg",
     logoMode: "square",
     media: [
@@ -52,7 +52,7 @@ export const projects: ProjectItem[] = [
       "Focused on a more social presentation of technical progress.",
     ],
     tags: ["React", "TypeScript", "API Integration", "Web App"],
-    github: "https://github.com/yourusername/leetsocial",
+    github: "https://github.com/thedeclancarter/LeetSocial",
     logo: "/images/projects/LeetSocial/card.jpeg",
     logoMode: "square",
     media: [

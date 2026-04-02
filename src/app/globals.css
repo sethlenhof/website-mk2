@@ -54,3 +54,33 @@ body {
     rgba(130, 100, 255, 1) 100%
   );
 }
+
+
+/* Modal-specific scrollbar */
+.modal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(140, 80, 255, 0.8) transparent;
+}
+
+/* Chrome / Edge / Safari */
+.modal-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.modal-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(45deg, rgba(251, 63, 220, 1) 0%, rgba(105, 70, 252, 1) 100%)
+    padding-box;
+}
+
+.modal-scrollbar::-webkit-scrollbar-thumb:hover {
+  background:
+    linear-gradient(45deg, rgba(255, 90, 230, 1) 0%, rgba(130, 100, 255, 1) 100%)
+    padding-box;
+}
