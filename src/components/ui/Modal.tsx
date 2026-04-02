@@ -40,6 +40,7 @@ export default function Modal({
 }: ModalProps) {
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     let openTimer: ReturnType<typeof setTimeout> | null = null;
@@ -47,6 +48,7 @@ export default function Modal({
 
     if (isOpen) {
       setMounted(true);
+      setScrolled(false);
       openTimer = setTimeout(() => {
         setVisible(true);
       }, 20);
@@ -54,6 +56,7 @@ export default function Modal({
       setVisible(false);
       closeTimer = setTimeout(() => {
         setMounted(false);
+        setScrolled(false);
         onAfterClose?.();
       }, 500);
     }
@@ -86,53 +89,70 @@ export default function Modal({
     <div
       onClick={onClose}
       className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-500 ${
-        visible ? "bg-black/60" : "bg-black/0"
+        visible ? "bg-black/60 backdrop-blur-md" : "bg-black/0 backdrop-blur-0"
       }`}
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className={`max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-white/10 bg-[#1a1f1d] p-6 shadow-2xl transition-all duration-500 ${
+        className={`relative w-full max-w-4xl rounded-3xl border border-white/10 bg-[#1a1f1d] shadow-2xl transition-all duration-500 overflow-y-hidden ${
           visible
             ? "translate-y-0 scale-100 opacity-100"
             : "translate-y-2 scale-[0.98] opacity-0"
         }`}
       >
-      <div className="mb-6 flex items-start justify-between gap-4 border-b border-white/10 pb-4">
-        <div
-          className={`min-w-0 ${
-            headerLogoMode === "wide"
-              ? "flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
-              : "flex min-w-0 items-center gap-4"
-          }`}
-        >
-          {headerLogo ? (
-            <div
-              className={`flex shrink-0 items-center justify-center overflow-hidden ${
-                headerLogoMode === "wide" ? "w-fit px-3 py-2" : "h-16 w-16 rounded-2xl border border-white/10 bg-black/20"
-              }`}
-            >
-              <img
-                src={headerLogo}
-                alt={headerLogoAlt ?? `${title} logo`}
-                className={getHeaderLogoClass(headerLogoMode)}
-              />
-            </div>
-          ) : null}
-
-          <h3 className="min-w-0 text-2xl font-semibold text-white">
-            {title}
-          </h3>
-        </div>
-
         <button
           onClick={onClose}
-          className="shrink-0 rounded-full border border-white/10 px-3 py-1 text-sm text-white/70 transition hover:bg-white/10 hover:text-white"
+          aria-label="Close modal"
+          className="absolute right-6 top-6 z-50 flex items-center rounded-full border border-red-500 bg-[#1a1f1d]/90 px-3 py-1 text-sm text-white/70 transition hover:bg-red-500/10 hover:text-white"
         >
-          Close
+          <span
+            className={`inline-block overflow-hidden whitespace-nowrap transition-all duration-500 ease-out ${
+              scrolled
+                ? "mr-0 max-w-0 opacity-0"
+                : "mr-2 max-w-16 opacity-100"
+            }`}
+          >
+            Close
+          </span>
+          <span className="text-lg leading-none">X</span>
         </button>
-      </div>
 
-        {children}
+        <div
+          className="modal-scrollbar max-h-[90vh] overflow-y-auto rounded-3xl p-6"
+          onScroll={(e) => {
+            setScrolled(e.currentTarget.scrollTop > 20);
+          }}
+        >
+          <div className="mb-6 border-b border-white/10 pb-4 pr-28">
+            <div
+              className={`min-w-0 ${
+                headerLogoMode === "wide"
+                  ? "flex min-w-0 flex-col gap-3 sm:flex-row sm:items-center sm:gap-4"
+                  : "flex min-w-0 items-center gap-4"
+              }`}
+            >
+              {headerLogo ? (
+                <div
+                  className={`flex shrink-0 items-center justify-center overflow-hidden ${
+                    headerLogoMode === "wide" ? "w-fit" : "h-16 w-16 rounded-2xl border border-white/10 bg-black/20"
+                  }`}
+                >
+                  <img
+                    src={headerLogo}
+                    alt={headerLogoAlt ?? `${title} logo`}
+                    className={getHeaderLogoClass(headerLogoMode)}
+                  />
+                </div>
+              ) : null}
+
+              <h3 className="min-w-0 text-2xl font-semibold text-white">
+                {title}
+              </h3>
+            </div>
+          </div>
+
+          {children}
+        </div>
       </div>
     </div>
   );
