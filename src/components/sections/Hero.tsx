@@ -10,24 +10,24 @@ export default function Hero() {
       className="relative mx-auto max-w-6xl px-6 py-20 md:py-24"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 flex justify-center">
-        <div className="h-72 w-[600px] rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="hero-glow h-72 w-[600px] rounded-full bg-blue-500/10 blur-3xl" />
       </div>
 
       <div className="grid items-center gap-8 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur">
-          <p className="text-xs uppercase tracking-[0.25em] text-white/50">
+          <p className="hero-fade-1 text-xs uppercase tracking-[0.25em] text-white/50">
             {site.name}
           </p>
 
-          <h1 className="mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="hero-fade-2 mt-4 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
             {site.headline}
           </h1>
 
-          <p className="mt-6 max-w-3xl text-base leading-7 text-white/70 sm:text-lg">
+          <p className="hero-fade-3 mt-6 max-w-3xl text-base leading-7 text-white/70 sm:text-lg">
             {site.subheadline}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="hero-fade-4 mt-8 flex flex-wrap gap-3">
             {/* <button
               onClick={() => scrollToSection("projects")}
               className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
@@ -57,8 +57,8 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="flex justify-center lg:justify-end">
-          <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-2 shadow-xl backdrop-blur">
+        <div className="hero-fade-3 flex justify-center lg:justify-end">
+          <div className="hero-float overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-2 shadow-xl backdrop-blur">
             <img
               src="/images/profile/me.jpeg"
               alt="Seth Lenhof"
