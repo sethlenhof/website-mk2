@@ -1,58 +1,72 @@
+export type SkillItem = {
+  label: string;
+  href?: string;
+};
+
 export type SkillCategory = {
   title: string;
-  items: string[];
+  items: SkillItem[];
 };
 
 export const skills: SkillCategory[] = [
   {
     title: "Languages",
     items: [
-      "C++",
-      "C#",
-      "TypeScript",
-      "JavaScript",
-      "Python",
-      "Java",
-      "SQL",
-      "C",
+      { label: "C++" },
+      { label: "C#" },
+      { label: "TypeScript" },
+      { label: "JavaScript" },
+      { label: "Python" },
+      { label: "Java" },
+      { label: "SQL" },
+      { label: "C" },
     ],
   },
   {
     title: "Simulation / Graphics",
     items: [
-      "Prepar3D",
-      "HLA",
-      "MAK RTI",
-      "SimConnect",
-      "PDK",
-      "DirectX 12",
-      "OpenGL",
-      "Unreal Engine 5",
+      { label: "Prepar3D" },
+      { label: "HLA" },
+      { label: "MAK RTI" },
+      { label: "SimConnect" },
+      { label: "PDK" },
+      { label: "DirectX 12" },
+      { label: "OpenGL" },
+      { label: "Unreal Engine 5" },
     ],
   },
   {
     title: "Frameworks / Web",
     items: [
-      "React",
-      "Next.js",
-      "Node.js",
-      "Express",
-      "ASP.NET",
-      "Tailwind CSS",
+      { label: "React" },
+      { label: "Next.js" },
+      { label: "Node.js" },
+      { label: "Express" },
+      { label: "ASP.NET" },
+      { label: "Tailwind CSS" },
     ],
   },
   {
     title: "Dev Tools / Platforms",
     items: [
-      "Git",
-      "GitLab CI/CD",
-      "Docker",
-      "Linux",
-      "Windows",
-      "macOS",
-      "SonarQube",
-      "Fortify",
-      "WiX",
+      { label: "Git" },
+      { label: "GitLab CI/CD" },
+      { label: "Docker" },
+      { label: "Linux" },
+      { label: "Windows" },
+      { label: "macOS" },
+      { label: "SonarQube" },
+      { label: "Fortify" },
+      { label: "WiX" },
+    ],
+  },
+  {
+    title: "Certifications",
+    items: [
+      {
+        label: "CompTIA Security+",
+        href: "https://www.credly.com/badges/b2202a1b-83ce-4e59-a6de-b6840303ebc8",
+      },
     ],
   },
 ];
