@@ -1,4 +1,6 @@
 import type { ProjectItem } from "@/data/projects";
+import Chip from "@/components/ui/Chip";
+import CardCta from "@/components/ui/CardCta";
 
 type ProjectCardProps = {
   item: ProjectItem;
@@ -10,9 +12,9 @@ export default function ProjectCard({ item, onOpen }: ProjectCardProps) {
     <button
       type="button"
       onClick={onOpen}
-      className="w-full rounded-2xl border border-white/10 bg-white/5 p-0 text-left shadow-lg transition hover:bg-white/10"
+      className="group w-full rounded-3xl border border-white/10 bg-white/5 p-0 text-left shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-[0_0_18px_rgba(105,70,252,0.18)]"
     >
-      <div className="overflow-hidden rounded-t-2xl border-b border-white/10 bg-black/20">
+      <div className="overflow-hidden rounded-t-3xl border-b border-white/10 bg-black/20">
         <img
           src={item.logo}
           alt={`${item.title} cover`}
@@ -25,18 +27,15 @@ export default function ProjectCard({ item, onOpen }: ProjectCardProps) {
 
         <p className="mt-3 text-white/70">{item.summary}</p>
 
-        <div className="mt-5 flex flex-wrap gap-2">
-          {item.tags.slice(0, 4).map((tag) => (
-            <span
-              key={tag}
-              className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap gap-2">
+            {item.tags.slice(0, 4).map((tag) => (
+              <Chip key={tag}>{tag}</Chip>
+            ))}
+          </div>
 
-        <div className="mt-5 text-sm text-white/50">View more +</div>
+          <CardCta label="View details +" />
+        </div>
       </div>
     </button>
   );
