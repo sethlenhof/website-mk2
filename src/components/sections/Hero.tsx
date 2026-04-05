@@ -2,6 +2,7 @@
 
 import { site } from "@/data/site";
 import { scrollToSection } from "@/util/ScrollToSection";
+import PillButton from "@/components/ui/PillButton";
 
 export default function Hero() {
   return (
@@ -28,32 +29,20 @@ export default function Hero() {
           </p>
 
           <div className="hero-fade-4 mt-8 flex flex-wrap gap-3">
-            {/* <button
-              onClick={() => scrollToSection("projects")}
-              className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
-            >
-              View Projects
-            </button> */}
-            <button
-              onClick={() => scrollToSection("experience")}
-              className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
-            >
+            {/* <PillButton href={site.links.github} external>
+              GitHub
+            </PillButton> */}
+            <PillButton onClick={() => scrollToSection("experience")}>
               View Experience
-            </button>
-            <a
-              href={site.links.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
-            >
+            </PillButton>
+
+            <PillButton href={site.links.linkedin} external>
               LinkedIn
-            </a>
-            <a
-              href={`mailto:${site.email}`}
-              className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
-            >
+            </PillButton>
+
+            <PillButton href={`mailto:${site.email}`}>
               Contact
-            </a>
+            </PillButton>
           </div>
         </div>
 

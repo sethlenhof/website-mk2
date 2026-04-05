@@ -1,4 +1,5 @@
 import SectionHeader from "@/components/ui/SectionHeader";
+import PillButton from "@/components/ui/PillButton";
 import { about } from "@/data/about";
 
 export default function AboutSection() {
@@ -26,22 +27,12 @@ export default function AboutSection() {
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">
-            <a
-              href={resumeHref}
-              target="_blank"
-              rel="noreferrer"
-              className="rounded-full border border-white/10 bg-white/10 px-5 py-2 text-sm text-white transition hover:bg-white/20"
-            >
+            <PillButton href={resumeHref} external>
               View Resume
-            </a>
-
-            <a
-              href={resumeHref}
-              download
-              className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-sm text-white/80 transition hover:bg-white/10"
-            >
+            </PillButton>
+            <PillButton href={resumeHref} download>
               Download PDF
-            </a>
+            </PillButton>
           </div>
 
           <div className="mt-6 hidden overflow-hidden rounded-2xl border border-white/10 bg-black/20 block lg:block">
