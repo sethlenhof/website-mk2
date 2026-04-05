@@ -1,5 +1,6 @@
 "use client";
 
+import { scrollToSection } from "@/util/ScrollToSection";
 import { useEffect, useState } from "react";
 
 const navItems = [
@@ -56,32 +57,6 @@ useEffect(() => {
 
   return () => clearTimeout(timer);
 }, []);
-
-const scrollToSection = (id: string) => {
-  const section = document.getElementById(id);
-  if (!section) return;
-
-  if (id === "home") {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-    return;
-  }
-
-  const nav = document.querySelector("header");
-  const navHeight = nav ? nav.getBoundingClientRect().height : 0;
-
-  const top =
-    section.getBoundingClientRect().top +
-    window.scrollY -
-    navHeight;
-
-  window.scrollTo({
-    top,
-    behavior: "smooth",
-  });
-};
 
   return (
     <header className="sticky top-0 z-50 px-3 pt-3">
