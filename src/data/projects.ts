@@ -44,15 +44,15 @@ export const projects: ProjectItem[] = [
         href: "https://devpost.com/software/itemize-8lhb2c"
       }
     ],
-    logo: "/images/projects/itemize/card.png",
+    logo: "/images/projects/Itemize/card.png",
     logoMode: "square",
     media: [
-      { src: "/images/projects/itemize/1.png", alt: "Login screen" },
-      { src: "/images/projects/itemize/2.png", alt: "Event view" },
-      { src: "/images/projects/itemize/3.png", alt: "Schedule view" },
-      { src: "/images/projects/itemize/4.png", alt: "Schedule view" },
-      { src: "/images/projects/itemize/5.png", alt: "Schedule view" },
-      { src: "/images/projects/itemize/demo.gif", alt: "Animated demo", type: "gif" },
+      { src: "/images/projects/Itemize/1.png", alt: "Login screen" },
+      { src: "/images/projects/Itemize/2.png", alt: "Event view" },
+      { src: "/images/projects/Itemize/3.png", alt: "Schedule view" },
+      { src: "/images/projects/Itemize/4.png", alt: "Schedule view" },
+      { src: "/images/projects/Itemize/5.png", alt: "Schedule view" },
+      { src: "/images/projects/Itemize/demo.gif", alt: "Animated demo", type: "gif" },
     ],
   },
   {
