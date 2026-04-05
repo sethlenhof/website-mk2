@@ -88,7 +88,7 @@ export default function Modal({
   return (
     <div
       onClick={onClose}
-      className={`fixed inset-0 z-50 flex items-center justify-center p-4 transition-all duration-500 ${
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 transition-all duration-500 ${
         visible ? "bg-black/60 backdrop-blur-md" : "bg-black/0 backdrop-blur-0"
       }`}
     >
