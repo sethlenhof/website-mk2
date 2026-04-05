@@ -10,8 +10,10 @@ export type ProjectItem = {
   description: string;
   bullets?: string[];
   tags: string[];
-  github?: string;
-  demo?: string;
+  links?: {
+    label: string;
+    href: string;
+  }[];
 
   logo: string;
   logoMode?: "square" | "contain" | "wide";
@@ -20,25 +22,37 @@ export type ProjectItem = {
 
 export const projects: ProjectItem[] = [
   {
-    title: "University Event Scheduler",
+    title: "Itemize",
     summary:
-      "Web app for organizing club events and preventing location and time conflicts.",
+      "Mobile app that converts receipt scans into a structured grocery inventory and generates recipes based on available ingredients using AI.",
     description:
-      "Built a scheduling application for school clubs and students with authentication, role-based access, validation, and SQL-backed event management. The system prevented overlapping events and enforced structured permissions for admins, campus admins, and students.",
+      "Built during a senior-year hackathon, Itemize converts receipt scans into a structured grocery inventory. Users can track what they have on hand and generate recipes from available ingredients. Integrated GPT to help parse receipt data and support recipe suggestions, with a focus on keeping the workflow simple and usable despite inconsistent real-world input.",
     bullets: [
-      "Built role-based access for admins, campus admins, and students.",
-      "Used SQL-backed event logic to prevent scheduling conflicts.",
-      "Implemented validation, authentication, and API-driven data flow.",
+      "Implemented receipt scanning workflow to extract grocery data from unstructured text",
+      "Integrated GPT API for item parsing and recipe generation",
+      "Designed inventory system to track ingredients and support recipe queries",
+      "Built as part of a team during a hackathon, contributing to core app functionality and UX",
     ],
-    tags: ["React", "Express", "SQL", "JWT", "REST API"],
-    github: "https://github.com/sethlenhof/DatabaseProject",
-    logo: "/images/projects/university-scheduler/card.jpg",
+    tags: ["SwiftUI", "Figma", "PHP", "Swift", "ChatGPT"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/Quickzand/Shellhacks2024"
+      },
+      {
+        label: "Devpost",
+        href: "https://devpost.com/software/itemize-8lhb2c"
+      }
+    ],
+    logo: "/images/projects/itemize/card.png",
     logoMode: "square",
     media: [
-      { src: "/images/projects/university-scheduler/1.jpeg", alt: "Login screen" },
-      { src: "/images/projects/university-scheduler/2.png", alt: "Event view" },
-      { src: "/images/projects/university-scheduler/3.png", alt: "Schedule view" },
-      { src: "/images/projects/university-scheduler/demo.gif", alt: "Animated demo", type: "gif" },
+      { src: "/images/projects/itemize/1.png", alt: "Login screen" },
+      { src: "/images/projects/itemize/2.png", alt: "Event view" },
+      { src: "/images/projects/itemize/3.png", alt: "Schedule view" },
+      { src: "/images/projects/itemize/4.png", alt: "Schedule view" },
+      { src: "/images/projects/itemize/5.png", alt: "Schedule view" },
+      { src: "/images/projects/itemize/demo.gif", alt: "Animated demo", type: "gif" },
     ],
   },
   {
@@ -52,7 +66,12 @@ export const projects: ProjectItem[] = [
       "Focused on a more social presentation of technical progress.",
     ],
     tags: ["React", "TypeScript", "API Integration", "Web App"],
-    github: "https://github.com/thedeclancarter/LeetSocial",
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/thedeclancarter/LeetSocial"
+      }
+    ],
     logo: "/images/projects/LeetSocial/card.jpeg",
     logoMode: "square",
     media: [
@@ -72,6 +91,16 @@ export const projects: ProjectItem[] = [
       "Focused on interactive storytelling and conversational flow.",
     ],
     tags: ["React", "Hackathon", "AI", "Frontend"],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/Quickzand/Shellhacks2023"
+      },
+      {
+        label: "Devpost",
+        href: "https://devpost.com/software/storyforge"
+      }
+    ],
     logo: "/images/projects/StoryForge/card.png",
     logoMode: "square",
     media: [
@@ -84,14 +113,28 @@ export const projects: ProjectItem[] = [
   {
     title: "Dequeue",
     summary:
-      "Web application that allows users to trigger shortcuts on their computer from their phone.",
+      "Hackathon project (2nd place) that lets users trigger shortcuts on their computer from their phone.",
     description:
-      "Designed a companion workflow system where mobile interaction can remotely launch actions on a desktop environment, focused on convenience and device coordination.",
+      "Built during a hackathon and awarded 2nd place, Dequeue is a companion workflow system that lets users trigger desktop shortcuts and actions from a mobile device. The project focused on convenience, device coordination, and creating a clean interaction flow between phone and desktop.",
     bullets: [
-      "Connected phone interactions to desktop-side actions.",
-      "Explored remote workflow control and device coordination.",
+      "Connected mobile interactions to desktop-side actions and workflows.",
+      "Designed for fast remote triggering of user-defined shortcuts.",
+      "Built as part of a hackathon team and recognized with 2nd place.",
     ],
     tags: ["Web App", "Automation", "Frontend", "Backend"],
+    links: [
+      {
+        label: "Mobile GitHub Repo",
+        href: "https://github.com/Quickzand/DequeueMobile"
+      },
+      {
+        label: "Desktop GitHub Repo",
+        href: "https://github.com/OliviaHarris03/DesktopDequeue"
+      },
+      { label: "Devpost",
+        href: "https://devpost.com/software/dequeue-m6ocaz"
+      }
+    ],
     logo: "/images/projects/Dequeue/card.png",
     logoMode: "square",
     media: [
