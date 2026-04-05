@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import ProjectCard from "@/components/ui/ProjectCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Modal from "@/components/ui/Modal";
+import Chip from "@/components/ui/Chip";
+import PillButton from "@/components/ui/PillButton";
 import { projects, type ProjectItem } from "@/data/projects";
 
 export default function ProjectsSection() {
@@ -73,126 +75,110 @@ export default function ProjectsSection() {
         headerLogoMode={selected?.logoMode}
         headerLogoAlt={selected ? `${selected.title} logo` : "Project logo"}
       >
-      {selected ? (
-        <div>
-          <div className="mb-6">
-            <h5 className="text-lg font-semibold text-white">Description</h5>
-            <p className="mt-3 leading-7 text-white/80">
-              {selected.description}
-            </p>
-          </div>
-
-          {selected.bullets && selected.bullets.length > 0 ? (
+        {selected ? (
+          <div>
             <div className="mb-6">
-              <h5 className="text-lg font-semibold text-white">Highlights</h5>
-              <ul className="mt-3 space-y-3 text-white/80">
-                {selected.bullets.map((bullet) => (
-                  <li key={bullet} className="leading-7">
-                    • {bullet}
-                  </li>
-                ))}
-              </ul>
+              <h5 className="text-lg font-semibold text-white">Description</h5>
+              <p className="mt-3 leading-7 text-white/80">
+                {selected.description}
+              </p>
             </div>
-          ) : null}
 
-          <div className="mb-6">
-            <h5 className="text-lg font-semibold text-white">Tech Stack</h5>
-            <div className="mt-3 flex flex-wrap gap-2">
-              {selected.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-sm text-white/70"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {(selected.github || selected.demo) && (
-            <div className="mb-8 flex flex-wrap gap-3">
-              {selected.github ? (
-                <a
-                  href={selected.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
-                >
-                  GitHub
-                </a>
-              ) : null}
-
-              {selected.demo ? (
-                <a
-                  href={selected.demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 transition hover:bg-white/10"
-                >
-                  Live Demo
-                </a>
-              ) : null}
-            </div>
-          )}
-
-          {selected.media && selected.media.length > 0 ? (
-            <div className="mt-8">
-              <div className="mb-3 flex items-center justify-between">
-                <h5 className="text-lg font-semibold text-white">Screenshots</h5>
-                {selected.media.length > 1 ? (
-                  <p className="text-sm text-white/50">
-                    {currentSlide + 1} / {selected.media.length}
-                  </p>
-                ) : null}
+            {selected.links && selected.links.length > 0 && (
+              <div className="mb-6">
+                <h5 className="text-lg font-semibold text-white">Links</h5>
+                <div className="mt-3 flex flex-wrap gap-3">
+                  {selected.links.map((link) => (
+                    <PillButton key={link.href} href={link.href} external>
+                      {link.label}
+                    </PillButton>
+                  ))}
+                </div>
               </div>
+            )}
 
-              <div className="relative">
-                <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
-                  <div
-                    className="flex transition-transform duration-500"
-                    style={{
-                      transform: `translateX(-${currentSlide * 100}%)`,
-                    }}
-                  >
-                    {selected.media.map((item) => (
-                      <div key={item.src} className="min-w-full">
-                        <img
-                          src={item.src}
-                          alt={item.alt}
-                          className="h-[240px] w-full object-contain bg-black/20 md:h-[380px]"
-                        />
-                      </div>
-                    ))}
-                  </div>
+            {selected.bullets && selected.bullets.length > 0 ? (
+              <div className="mb-6">
+                <h5 className="text-lg font-semibold text-white">Highlights</h5>
+                <ul className="mt-3 space-y-3 text-white/80">
+                  {selected.bullets.map((bullet) => (
+                    <li key={bullet} className="leading-7">
+                      • {bullet}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            <div className="mb-6">
+              <h5 className="text-lg font-semibold text-white">Tech Stack</h5>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {selected.tags.map((tag) => (
+                  <Chip key={tag}>{tag}</Chip>
+                ))}
+              </div>
+            </div>
+
+            {selected.media && selected.media.length > 0 ? (
+              <div className="mt-8">
+                <div className="mb-3 flex items-center justify-between">
+                  <h5 className="text-lg font-semibold text-white">
+                    Screenshots
+                  </h5>
+                  {selected.media.length > 1 ? (
+                    <p className="text-sm text-white/50">
+                      {currentSlide + 1} / {selected.media.length}
+                    </p>
+                  ) : null}
                 </div>
 
-                {selected.media.length > 1 ? (
-                  <>
-                    <button
-                      type="button"
-                      onClick={prevSlide}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 px-3 py-2 text-white/80 transition hover:bg-black/70"
-                      aria-label="Previous screenshot"
+                <div className="relative">
+                  <div className="overflow-hidden rounded-2xl border border-white/10 bg-black/20">
+                    <div
+                      className="flex transition-transform duration-500"
+                      style={{
+                        transform: `translateX(-${currentSlide * 100}%)`,
+                      }}
                     >
-                      ‹
-                    </button>
+                      {selected.media.map((item) => (
+                        <div key={item.src} className="min-w-full">
+                          <img
+                            src={item.src}
+                            alt={item.alt}
+                            className="h-[240px] w-full object-contain bg-black/20 md:h-[380px]"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
 
-                    <button
-                      type="button"
-                      onClick={nextSlide}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 px-3 py-2 text-white/80 transition hover:bg-black/70"
-                      aria-label="Next screenshot"
-                    >
-                      ›
-                    </button>
-                  </>
-                ) : null}
+                  {selected.media.length > 1 ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={prevSlide}
+                        className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 px-3 py-2 text-white/80 transition hover:bg-black/70"
+                        aria-label="Previous screenshot"
+                      >
+                        ‹
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={nextSlide}
+                        className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-black/50 px-3 py-2 text-white/80 transition hover:bg-black/70"
+                        aria-label="Next screenshot"
+                      >
+                        ›
+                      </button>
+                    </>
+                  ) : null}
+                </div>
               </div>
-            </div>
-          ) : null}
-        </div>
-      ) : null}
-    </Modal>
+            ) : null}
+          </div>
+        ) : null}
+      </Modal>
     </section>
   );
 }

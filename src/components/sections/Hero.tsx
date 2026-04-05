@@ -61,7 +61,7 @@ export default function Hero() {
               <img
                 src="/images/profile/me.jpeg"
                 alt="Seth Lenhof"
-                className="h-[300px] w-[250px] rounded-[1.5rem] object-cover sm:h-[360px] sm:w-[280px] lg:h-[400px] lg:w-[320px]"
+                className="h-[260px] w-[220px] sm:h-[320px] sm:w-[260px] rounded-[1.5rem] object-cover sm:h-[360px] sm:w-[280px] lg:h-[400px] lg:w-[320px]"
               />
             </div>
           </div>
