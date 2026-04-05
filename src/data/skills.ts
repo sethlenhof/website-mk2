@@ -17,6 +17,7 @@ export const skills: SkillCategory[] = [
       { label: "TypeScript" },
       { label: "JavaScript" },
       { label: "Python" },
+      { label: "Swift" },
       { label: "Java" },
       { label: "SQL" },
       { label: "C" },
