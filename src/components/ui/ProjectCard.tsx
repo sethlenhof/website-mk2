@@ -12,22 +12,22 @@ export default function ProjectCard({ item, onOpen }: ProjectCardProps) {
     <button
       type="button"
       onClick={onOpen}
-      className="group w-full rounded-3xl border border-white/10 bg-white/5 p-0 text-left shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-[0_0_18px_rgba(105,70,252,0.18)]"
+      className="group flex h-full w-full flex-col rounded-3xl border border-white/10 bg-white/5 p-0 text-left shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-[0_0_18px_rgba(105,70,252,0.18)]"
     >
       <div className="overflow-hidden rounded-t-3xl border-b border-white/10 bg-black/20">
         <img
           src={item.logo}
           alt={`${item.title} cover`}
-          className="h-44 w-full object-cover"
+          className="block h-44 w-full object-cover"
         />
       </div>
 
-      <div className="p-6">
+      <div className="flex flex-1 flex-col p-6">
         <h3 className="text-xl font-semibold text-white">{item.title}</h3>
 
         <p className="mt-3 text-white/70">{item.summary}</p>
 
-        <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-auto pt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex flex-wrap gap-2">
             {item.tags.slice(0, 4).map((tag) => (
               <Chip key={tag}>{tag}</Chip>
